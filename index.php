@@ -73,7 +73,7 @@
                 $urlsPunyCode = implode("\n", $urlsPunyCode);
                 $urlsNormal = implode("\n", $urlsNormal);
 
-                $allUrlsStr = $urlsNormal . '\n'. $urlsPunyCode;
+                $allUrlsStr = $urlsNormal . "\n". $urlsPunyCode;
 
             } catch (Exception $e) {
                 echo 'Ocorreu um erro ao processar o arquivo PDF: ' . $e->getMessage();
