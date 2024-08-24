@@ -1,5 +1,5 @@
-Utilizem o https://anablock.lapsus.com.br/ atualizado constantemente
+Codigo fonte para extrair sites do PDF
 
-Nosso grupo https://t.me/anablockbr
+Antes de instalar utilize o comando 
 
-Está gratis :3 
+composer require smalot/pdfparser
