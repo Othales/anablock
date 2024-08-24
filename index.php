@@ -18,6 +18,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdf'])) {
 
             $text = preg_replace("/\s+/", ' ', $pdf->getText());
 
+			$pattern = '/(xn--[a-z0-9-]+)(?:\s*\.?\s*)([a-z0-9-]+\.[a-z]{2,})/i';
+
+			if (preg_match_all($pattern, $text, $matches)) {
+				$urls = [];
+				foreach ($matches[1] as $key => $punycode) {
+					// Concatenar o Punycode com o próximo segmento (domínio)
+					$url = $punycode . $matches[2][$key];
+					$urls[] = $url;
+				}
+				echo "URLs Punycode encontradas: " . implode(", ", $urls) . PHP_EOL;
+			} else {
+				echo "Nenhuma URL Punycode encontrada no PDF." . PHP_EOL;
+			}
             preg_match_all('/\b(?:[a-z0-9-]+\.)+[a-z]{2,}(\/[^\s]*)?/i', $text, $matches);
 
             // TLDs desejados
